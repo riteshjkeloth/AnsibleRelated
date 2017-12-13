@@ -1,6 +1,6 @@
 ## Welcome to GitHub Pages
 
-This is the space where I would put all my Ansible related POCs and projects.
+This is the space where I put all my Ansible related POCs and projects.
 
 # Projects/POC list 
 ## 1.provisionTibco
