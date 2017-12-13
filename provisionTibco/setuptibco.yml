@@ -1,0 +1,4 @@
+---
+- hosts: tibco.servers
+  roles:
+     - common

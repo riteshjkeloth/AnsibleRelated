@@ -1,0 +1,60 @@
+<?xml  version="1.0"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>---Universal Installer Silent Installation Properties---</comment>
+
+<!--accept the license agreement-->
+<entry key="acceptLicense">true</entry>
+
+<!--the root installation directory-->
+<!--if the product does not support multiple instances and TIBCO_HOME has already been set then-->
+<!--this value is ignored and the existing TIBCO_HOME is used as the installation root-->
+<!--entry key="installationRoot">/opt/data/tibco</entry-->
+<entry key="installationRoot">{{ tibco_home }}</entry>
+
+<!--If using an existing environment then the installationRoot AND environmentName MUST match a pre-existing environment-->
+<!--entry key="environmentName">TIBCO-HOME</entry-->
+<entry key="environmentName">{{ env_name }}</entry>
+
+<!--Product Specific Properties can be set below using the same 'entry key=' format as above-->
+<!--Product Feature Settings-->
+
+<!-- TIBCO Rendezvous -->
+<entry key="protocolDaemon">trdp</entry>
+
+<!-- Third Party Core Libraries  -->
+<entry key="feature_Runtime_tpcl">true</entry>
+
+<!-- TIBCO Hawk Agent -->
+<!-- configDirectory - location of configuration files if it does not already exist -->
+<!--entry key="configDirectoryRoot">/home/ec2-user/tibco_cfg</entry-->
+<entry key="configDirectoryRoot">{{ cfg_dir }}</entry>
+
+<!-- TIBCO Designer -->
+<entry key="feature_Runtime_Designer">true</entry>
+<entry key="feature_Documentation_Designer">true</entry>
+
+<!-- TIBCO Runtime Agent -->
+<entry key="feature_Runtime_TRA">true</entry>
+<entry key="feature_Documentation_TRA">true</entry>
+<!-- Specify true or false -->
+<!-- if true, then specify values for databaseType and databaseDriver -->
+<entry key="useVendorDriver">false</entry>
+<!-- valid values for databaseType are SQLServer, DB2, OracleThin, OracleThick -->
+<entry key="databaseType"></entry>
+<!-- Specify directory or file for driver -->
+<entry key="databaseDriver"></entry>
+<!-- specify ociDirectory only if databaseType is OracleThick -->
+<entry key="ociDirectory"></entry>
+<!-- specify the ems home directory  -->
+<entry key="emsConfigDir"></entry>
+
+<!-- The following configuration parameters control the download of all LGPL components used by BW, e.g. Hibernate -->
+<!-- LGPLAssemblyLicenseAccepted - true or false to accept the license -->
+<!-- LGPLAssemblyDownload - true or false to download the assembly from the public tibco server -->
+<!-- LGPLAssemblyPath - if LGPLAssemblyDownload is false, this is the path where the LGPL assembly is located on the system (note that all LGPL assemblies must be in the same directory -->
+<entry key="LGPLAssemblyLicenseAccepted">true</entry>
+<entry key="LGPLAssemblyDownload">true</entry>
+<!--entry key="LGPLAssemblyPath">/opt/data/tibco/thirdpartyDownload</entry-->
+<entry key="LGPLAssemblyPath">{{ tibco_home }}/thirdpartyDownload</entry>
+</properties>

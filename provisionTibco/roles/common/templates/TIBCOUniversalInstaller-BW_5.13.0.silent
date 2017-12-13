@@ -1,0 +1,28 @@
+<?xml  version="1.0"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>---Universal Installer Silent Installation Properties---</comment>
+
+<!--accept the license agreement-->
+<entry key="acceptLicense">true</entry>
+
+<!--the root installation directory-->
+<!--if the product does not support multiple instances and TIBCO_HOME has already been set then-->
+<!--this value is ignored and the existing TIBCO_HOME is used as the installation root-->
+<!--entry key="installationRoot">/opt/data/tibco</entry-->
+<entry key="installationRoot">{{ tibco_home }}</entry>
+
+<!--If multiple environments are supported, create a new one or use and existing one-->
+<!--If the product does not support multiple environments, then the values below are ignored-->
+<entry key="createNewEnvironment">true</entry>
+
+<!--If using an existing environment then the installationRoot AND environmentName MUST match a pre-existing environment-->
+<!--entry key="environmentName">TIBCO-HOME</entry-->
+<entry key="environmentName">{{ env_name }}</entry>
+
+<!--Product Feature Settings-->
+<entry key="feature_AMBW Runtime_BW">true</entry>
+<entry key="feature_AMBW Designtime_BW">true</entry>
+<entry key="feature_Documentation_BW">true</entry>
+
+</properties>

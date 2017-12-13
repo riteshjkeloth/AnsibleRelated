@@ -1,0 +1,4 @@
+tibco_home: /opt/data/tibco
+env_name: TIBCO-HOME
+cfg_dir: /home/<user>/tibco_cfg
+zip_dir: /opt/installables

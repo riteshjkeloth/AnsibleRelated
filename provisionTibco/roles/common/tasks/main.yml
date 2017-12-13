@@ -1,0 +1,37 @@
+# This is the main.yml having all the tasks defined
+
+   - name: Create Directories
+     file: 
+       path: "{{ item }}"
+       state: directory
+     with_items:
+       - "{{ zip_dir }}/TIB_rv_8.4.4_linux_x86"
+       - "{{ zip_dir }}/TIB_TRA_5.10.0_linux_x86_64"
+       - "{{ zip_dir }}/TIB_BW_5.13.0_linux26gl23_x86_64"
+
+   - name: Unarchive RV Installation File
+     unarchive: copy=no src={{ zip_dir }}/TIB_rv_8.4.4_linux_x86.zip dest={{ zip_dir }}/TIB_rv_8.4.4_linux_x86
+
+   - name: Configure RV Silent File
+     template: src=roles/common/templates/TIBCOUniversalInstaller-rv.silent dest={{ zip_dir }}/TIB_rv_8.4.4_linux_x86/TIBCOUniversalInstaller-rv_1.silent
+
+   - name: Install RV 8.4.4
+     shell: "{{ zip_dir }}/TIB_rv_8.4.4_linux_x86/TIBCOUniversalInstaller-lnx-x86.bin -silent -V {{ zip_dir }}/TIB_rv_8.4.4_linux_x86/TIBCOUniversalInstaller-rv_1.silent"
+
+   - name: Unarchive TRA Installation File
+     unarchive: copy=no src="{{ zip_dir }}/TIB_TRA_5.10.0_linux_x86_64.zip" dest="{{ zip_dir }}/TIB_TRA_5.10.0_linux_x86_64"
+
+   - name: Configure TRA Silent File
+     template: src=roles/common/templates/TIBCOUniversalInstaller_TRA_5.10.0.silent dest="{{ zip_dir }}/TIB_TRA_5.10.0_linux_x86_64/TIBCOUniversalInstaller_TRA_5.10.0_1.silent"
+
+   - name: Install TRA 5.10.0
+     shell: "{{ zip_dir }}/TIB_TRA_5.10.0_linux_x86_64/TIBCOUniversalInstaller-lnx-x86-64.bin -silent -V {{ zip_dir }}/TIB_TRA_5.10.0_linux_x86_64/TIBCOUniversalInstaller_TRA_5.10.0_1.silent"
+
+   - name: Unarchive BW Installation File
+     unarchive: copy=no src="{{ zip_dir }}/TIB_BW_5.13.0_linux26gl23_x86_64.zip" dest="{{ zip_dir }}/TIB_BW_5.13.0_linux26gl23_x86_64"
+
+   - name: Configure Silent Files
+     template: src=roles/common/templates/TIBCOUniversalInstaller-BW_5.13.0.silent dest="{{ zip_dir }}/TIB_BW_5.13.0_linux26gl23_x86_64/TIBCOUniversalInstaller-BW_5.13.0_1.silent"
+
+   - name: Install BW 5.13.0
+     shell: "{{ zip_dir }}/TIB_BW_5.13.0_linux26gl23_x86_64/TIBCOUniversalInstaller-lnx-x86-64.bin -silent -V {{ zip_dir }}/TIB_BW_5.13.0_linux26gl23_x86_64/TIBCOUniversalInstaller-BW_5.13.0_1.silent"
