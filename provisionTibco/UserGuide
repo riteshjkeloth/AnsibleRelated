@@ -1,0 +1,14 @@
+# This project is a POC for installing the below TIBCO Products(vanilla installation) using ansible
+  1. TIB_rv_8.4.4_linux_x86
+  2. TIB_TRA_5.10.0_linux_x86_6
+  3. TIB_BW_5.13.0_linux26gl23_x86_64
+ 
+ # Pre-requisite
+  - Java should be installed
+  - set the PATH with "<JAVA-HOME>/bin"
+ 
+Update the provisionTibco/group_vars/all with the appropriate values for 
+    - tibco_home(e.g. /opt/tibco)
+    - env_name(e.g. TIBCO-HOME)
+    - cfg_dir(e.g. /home/<user>/tibco_cfg) -> 
+    - zip_dir(e.g. /opt/installables) -> Location for all the zip installable files
